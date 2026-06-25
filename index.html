@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f5f1e8" />
+    <title>Никита и Анна — Приглашение на свадьбу</title>
+    <meta
+      name="description"
+      content="Мы рады пригласить вас разделить с нами один из самых важных дней нашей жизни — 25 сентября 2026 года."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Manrope:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="site-header" id="site-header">
+      <div class="container header-inner">
+        <a href="#top" class="logo">Н <span class="amp">&amp;</span> А</a>
+
+        <nav class="nav-desktop" aria-label="Основная навигация">
+          <a href="#story">О нас</a>
+          <a href="#details">Детали</a>
+          <a href="#schedule">Программа</a>
+          <a href="#faq">Вопросы</a>
+          <a href="#rsvp">Анкета</a>
+        </nav>
+
+        <a href="#rsvp" class="btn btn-primary btn-pill header-cta">Подтвердить</a>
+
+        <button
+          type="button"
+          class="menu-toggle"
+          id="menu-toggle"
+          aria-label="Открыть меню"
+          aria-expanded="false"
+          aria-controls="nav-mobile"
+        >
+          <svg class="icon-menu" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          <svg class="icon-close" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+
+      <nav class="nav-mobile" id="nav-mobile" aria-label="Мобильная навигация" hidden>
+        <ul>
+          <li><a href="#story">О нас</a></li>
+          <li><a href="#details">Детали</a></li>
+          <li><a href="#schedule">Программа</a></li>
+          <li><a href="#faq">Вопросы</a></li>
+          <li><a href="#rsvp">Анкета</a></li>
+          <li><a href="#rsvp" class="btn btn-primary btn-pill">Подтвердить</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main id="top">
+      <!-- Hero -->
+      <section class="hero">
+        <img src="assets/wedding-hero.png" alt="Пара, идущая по залитому солнцем полю" class="hero-bg" />
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+          <p class="eyebrow eyebrow-light">Мы женимся</p>
+          <h1 class="hero-title">
+            Никита<span class="amp-italic">и</span>Анна
+          </h1>
+          <div class="hero-date">
+            <span class="rule"></span>
+            25 сентября 2026
+            <span class="rule"></span>
+          </div>
+          <p class="hero-sub">Подмосковье · Ресторан «Дюна»</p>
+          <a href="#rsvp" class="btn btn-outline-light btn-pill hero-cta">Подтвердить присутствие</a>
+        </div>
+      </section>
+
+      <!-- Countdown -->
+      <section class="countdown">
+        <div class="container">
+          <p class="eyebrow eyebrow-muted center">До торжества осталось</p>
+          <div class="countdown-grid" id="countdown">
+            <div class="countdown-unit"><span class="countdown-num" data-unit="days">--</span><span class="countdown-label">дней</span></div>
+            <div class="countdown-unit"><span class="countdown-num" data-unit="hours">--</span><span class="countdown-label">часов</span></div>
+            <div class="countdown-unit"><span class="countdown-num" data-unit="minutes">--</span><span class="countdown-label">минут</span></div>
+            <div class="countdown-unit"><span class="countdown-num" data-unit="seconds">--</span><span class="countdown-label">секунд</span></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Story -->
+      <section id="story" class="story container narrow center">
+        <p class="eyebrow eyebrow-primary">Дорогие друзья</p>
+        <h2 class="section-title">Мы приглашаем вас разделить с нами этот день</h2>
+        <div class="story-text">
+          <p>
+            Семь лет назад мы случайно оказались за одним столиком в маленькой кофейне.
+            С тех пор каждый день мы выбираем друг друга — в больших решениях и в самых
+            обычных мелочах.
+          </p>
+          <p>
+            Теперь мы хотим сделать главный шаг и сказать «да» в окружении самых близких
+            людей. Ваше присутствие сделает этот день по-настоящему незабываемым.
+          </p>
+        </div>
+        <div class="story-sign">
+          <span class="rule rule-dark"></span>
+          <span class="story-sign-text">с любовью</span>
+          <span class="rule rule-dark"></span>
+        </div>
+      </section>
+
+      <!-- Details -->
+      <section id="details" class="details">
+        <div class="container details-grid">
+          <div class="details-photo">
+            <img src="assets/wedding-venue.png" alt="Площадка торжества — Ресторан «Дюна»" />
+          </div>
+          <div class="details-info">
+            <p class="eyebrow eyebrow-primary">Когда и где</p>
+            <h2 class="section-title">Детали торжества</h2>
+            <dl class="details-list">
+              <div class="details-item">
+                <span class="details-icon">
+                  <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                </span>
+                <div>
+                  <dt>Дата</dt>
+                  <dd class="details-value">25 сентября 2026</dd>
+                  <dd class="details-sub">суббота</dd>
+                </div>
+              </div>
+              <div class="details-item">
+                <span class="details-icon">
+                  <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                </span>
+                <div>
+                  <dt>Время</dt>
+                  <dd class="details-value">15:00</dd>
+                  <dd class="details-sub">Сбор гостей</dd>
+                </div>
+              </div>
+              <div class="details-item">
+                <span class="details-icon">
+                  <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                </span>
+                <div>
+                  <dt>Место</dt>
+                  <dd class="details-value">Ресторан «Дюна»</dd>
+                  <dd class="details-sub">Москва</dd>
+                </div>
+              </div>
+            </dl>
+            <p class="details-address">Московская область, Юбилейный просп., 23В, Реутов</p>
+            <a
+              href="https://yandex.ru/maps/-/CTQ26D2Z"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn btn-primary btn-pill"
+              >Открыть карту</a
+            >
+          </div>
+        </div>
+      </section>
+
+      <!-- Schedule -->
+      <section id="schedule" class="schedule container narrow">
+        <div class="center">
+          <p class="eyebrow eyebrow-primary">Расписание дня</p>
+          <h2 class="section-title">Программа праздника</h2>
+        </div>
+        <ol class="timeline" id="timeline"></ol>
+      </section>
+
+      <!-- FAQ -->
+      <section id="faq" class="faq">
+        <div class="container faq-inner">
+          <div class="center">
+            <p class="eyebrow eyebrow-primary">Полезно знать</p>
+            <h2 class="section-title">Частые вопросы</h2>
+          </div>
+          <div class="accordion" id="accordion"></div>
+        </div>
+      </section>
+
+      <!-- RSVP -->
+      <section id="rsvp" class="rsvp container">
+        <div id="rsvp-form-wrap">
+          <div class="center">
+            <p class="eyebrow eyebrow-primary">Будете с нами?</p>
+            <h2 class="section-title">Подтвердите присутствие</h2>
+            <p class="rsvp-deadline">Пожалуйста, ответьте до 1 августа 2026 года.</p>
+          </div>
+
+          <form id="rsvp-form" class="rsvp-form" novalidate>
+            <div class="field">
+              <label for="name">Имя и фамилия</label>
+              <input id="name" name="name" type="text" required placeholder="Как к вам обращаться" />
+            </div>
+
+            <div class="field">
+              <span class="field-label">Сможете прийти?</span>
+              <div class="choice-grid">
+                <button type="button" class="choice is-active" data-attending="yes">С радостью буду</button>
+                <button type="button" class="choice" data-attending="no">К сожалению, нет</button>
+              </div>
+            </div>
+
+            <div id="attending-extra">
+              <div class="field">
+                <label for="guests">Количество гостей</label>
+                <select id="guests" name="guests">
+                  <option value="1">1 человек</option>
+                  <option value="2">2 человека</option>
+                  <option value="3">3 человека</option>
+                  <option value="4">4 человека</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="note">Пожелания по меню или комментарий</label>
+                <textarea id="note" name="note" rows="3" placeholder="Аллергии, вегетарианство, особые пожелания…"></textarea>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-pill btn-block">Отправить анкету</button>
+          </form>
+        </div>
+
+        <div id="rsvp-success" class="rsvp-success center" hidden>
+          <span class="success-check">
+            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+          </span>
+          <h2 class="section-title">Спасибо за ответ!</h2>
+          <p class="rsvp-success-text">
+            Мы получили вашу анкету и уже считаем дни до встречи. Если планы изменятся —
+            просто напишите нам.
+          </p>
+          <svg class="success-heart" viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer center">
+      <p class="footer-names">Никита<span class="amp-italic">и</span>Анна</p>
+      <p class="footer-meta">25 сентября 2026 · Москва</p>
+      <p class="footer-note">С любовью ждём вас на нашем празднике</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -23,23 +23,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Create production config
-        env:
-          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
-          SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
-        run: |
-          if [ -z "$SUPABASE_URL" ] || [ -z "$SUPABASE_ANON_KEY" ]; then
-            echo "::error::Добавьте секреты SUPABASE_URL и SUPABASE_ANON_KEY в настройках репозитория"
-            exit 1
-          fi
-          node -e "
-            const fs = require('fs');
-            fs.writeFileSync('config.js', 'window.RSVP_CONFIG = ' + JSON.stringify({
-              storage: 'supabase',
-              supabase: { url: process.env.SUPABASE_URL, anonKey: process.env.SUPABASE_ANON_KEY }
-            }, null, 2) + ';\\n');
-          "
-
       - uses: actions/configure-pages@v5
 
       - uses: actions/upload-pages-artifact@v3

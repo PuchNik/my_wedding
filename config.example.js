@@ -1,8 +1,9 @@
 // Локально (npm start) — ответы в data/rsvp.json
-// На GitHub Pages — ответы в Supabase (см. supabase/schema.sql)
 //
-// Замените url и anonKey на данные из Supabase → Project Settings → API
-// url — только Project URL, без /rest/v1 (например https://xxxxx.supabase.co)
+// На GitHub Pages — Google Таблицы (рекомендуется для России, без VPN)
+// Настройка: google-apps-script/Code.gs
+//
+// Supabase — альтернатива, но может не работать с мобильного интернета в РФ
 
 window.RSVP_CONFIG = (function () {
   var isLocal =
@@ -13,10 +14,15 @@ window.RSVP_CONFIG = (function () {
   }
 
   return {
-    storage: "supabase",
-    supabase: {
-      url: "https://ВАШ_ПРОЕКТ.supabase.co",
-      anonKey: "ВАШ_ANON_KEY",
+    storage: "google",
+    google: {
+      webAppUrl: "https://script.google.com/macros/s/ВАШ_ID/exec",
     },
   };
+
+  // storage: "supabase" — если нужен Supabase вместо Google
+  // supabase: {
+  //   url: "https://xxxxx.supabase.co",
+  //   anonKey: "eyJ...",
+  // },
 })();

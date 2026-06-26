@@ -6,11 +6,11 @@ window.RSVP_CONFIG = (function () {
     return { storage: "local" };
   }
 
+  // Google Таблицы — стабильно работает в России без VPN
   return {
-    storage: "supabase",
-    supabase: {
-      url: "https://pqqnkgivppdiyndryuxh.supabase.co",
-      anonKey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBxcW5rZ2l2cHBkaXluZHJ5dXhoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODI0OTQ3MjYsImV4cCI6MjA5ODA3MDcyNn0.WVa_ZaTR6AkwhnVWZKQSGvnC0X93GyMkEavQLTERAvI",
+    storage: "google",
+    google: {
+      webAppUrl: "https://script.google.com/macros/s/AKfycbz2d03UmvOVdoplRWhopO6WVv7nJByM_NpgAKoWnklBoUkRNZCndpw_K818MP-OA29g/exec",
     },
   };
 })();

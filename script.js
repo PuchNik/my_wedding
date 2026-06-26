@@ -191,8 +191,43 @@ function getSupabaseRsvpUrl(baseUrl) {
   return base + "/rest/v1/rsvp";
 }
 
+function getRsvpErrorMessage(err) {
+  var message = err && err.message ? err.message : "";
+
+  if (
+    message === "Load failed" ||
+    message === "Failed to fetch" ||
+    message.indexOf("NetworkError") !== -1 ||
+    (err && err.name === "TypeError")
+  ) {
+    return "Не удалось отправить анкету. Проверьте интернет-соединение и попробуйте ещё раз.";
+  }
+
+  return message || "Не удалось отправить анкету. Попробуйте ещё раз.";
+}
+
 function saveRsvp(payload) {
   var config = window.RSVP_CONFIG || { storage: "local" };
+
+  if (config.storage === "google") {
+    if (!config.google || !config.google.webAppUrl) {
+      return Promise.reject(new Error("Форма не настроена для приёма ответов"));
+    }
+
+    var body = new URLSearchParams({
+      name: payload.name,
+      attending: payload.attending,
+      guests: String(payload.guests),
+      comment: payload.comment,
+    });
+
+    return fetch(config.google.webAppUrl, {
+      method: "POST",
+      mode: "no-cors",
+      headers: { "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8" },
+      body: body.toString(),
+    });
+  }
 
   if (config.storage === "supabase") {
     if (!config.supabase || !config.supabase.url || !config.supabase.anonKey) {
@@ -288,7 +323,7 @@ function initRsvp() {
         success.scrollIntoView({ behavior: "smooth", block: "center" });
       })
       .catch(function (err) {
-        setError(err.message || "Не удалось отправить анкету. Попробуйте ещё раз.");
+        setError(getRsvpErrorMessage(err));
       })
       .finally(function () {
         submitBtn.disabled = false;

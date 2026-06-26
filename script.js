@@ -186,6 +186,49 @@ function initFaq() {
 }
 
 /* ===== RSVP form ===== */
+function saveRsvp(payload) {
+  var config = window.RSVP_CONFIG || { storage: "local" };
+
+  if (config.storage === "supabase") {
+    if (!config.supabase || !config.supabase.url || !config.supabase.anonKey) {
+      return Promise.reject(new Error("Форма не настроена для приёма ответов"));
+    }
+
+    return fetch(config.supabase.url + "/rest/v1/rsvp", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        apikey: config.supabase.anonKey,
+        Authorization: "Bearer " + config.supabase.anonKey,
+        Prefer: "return=minimal",
+      },
+      body: JSON.stringify({
+        name: payload.name,
+        attending: payload.attending,
+        guests: payload.guests,
+        comment: payload.comment,
+      }),
+    }).then(function (res) {
+      if (!res.ok) {
+        return res.text().then(function () {
+          throw new Error("Не удалось отправить анкету");
+        });
+      }
+    });
+  }
+
+  return fetch("/api/rsvp", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload),
+  }).then(function (res) {
+    return res.json().then(function (data) {
+      if (!res.ok) throw new Error(data.error || "Не удалось отправить анкету");
+      return data;
+    });
+  });
+}
+
 function initRsvp() {
   var form = document.getElementById("rsvp-form");
   if (!form) return;
@@ -232,17 +275,7 @@ function initRsvp() {
     setError("");
     submitBtn.disabled = true;
 
-    fetch("/api/rsvp", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload),
-    })
-      .then(function (res) {
-        return res.json().then(function (data) {
-          if (!res.ok) throw new Error(data.error || "Не удалось отправить анкету");
-          return data;
-        });
-      })
+    saveRsvp(payload)
       .then(function () {
         document.getElementById("rsvp-form-wrap").hidden = true;
         var success = document.getElementById("rsvp-success");

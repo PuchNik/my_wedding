@@ -64,7 +64,6 @@
         <img src="assets/wedding-hero.png" alt="Пара, идущая по залитому солнцем полю" class="hero-bg" />
         <div class="hero-overlay"></div>
         <div class="hero-content">
-          <p class="eyebrow eyebrow-light">Мы женимся</p>
           <h1 class="hero-title">
             Никита<span class="amp-italic">и</span>Анна
           </h1>
@@ -73,8 +72,101 @@
             25 сентября 2026
             <span class="rule"></span>
           </div>
-          <p class="hero-sub">Подмосковье · Ресторан «Дюна»</p>
           <a href="#rsvp" class="btn btn-outline-light btn-pill hero-cta">Подтвердить присутствие</a>
+        </div>
+      </section>
+
+      <!-- Calendar -->
+      <section class="calendar-section" aria-label="Дата свадьбы">
+        <div class="calendar-bg" aria-hidden="true">
+          <svg class="calendar-bg-heart calendar-bg-heart--1" viewBox="0 0 24 24">
+            <path
+              d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="0.75"
+            />
+          </svg>
+          <svg class="calendar-bg-heart calendar-bg-heart--2" viewBox="0 0 24 24">
+            <path
+              d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="0.75"
+            />
+          </svg>
+          <svg class="calendar-bg-heart calendar-bg-heart--3" viewBox="0 0 24 24">
+            <path
+              d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"
+              fill="currentColor"
+            />
+          </svg>
+        </div>
+        <div class="container calendar-inner">
+          <p class="calendar-caption">
+            <span class="rule rule-dark"></span>
+            <span class="calendar-caption-text">Наш день</span>
+            <span class="rule rule-dark"></span>
+          </p>
+          <div class="calendar-card">
+            <header class="calendar-header">
+              <h2 class="calendar-month">Сентябрь</h2>
+              <span class="calendar-year">2026</span>
+            </header>
+            <div class="calendar-weekdays" aria-hidden="true">
+              <span>Пн</span>
+              <span>Вт</span>
+              <span>Ср</span>
+              <span>Чт</span>
+              <span>Пт</span>
+              <span>Сб</span>
+              <span>Вс</span>
+            </div>
+            <ol class="calendar-grid">
+              <li class="calendar-day is-empty" aria-hidden="true"></li>
+              <li class="calendar-day"><span>1</span></li>
+              <li class="calendar-day"><span>2</span></li>
+              <li class="calendar-day"><span>3</span></li>
+              <li class="calendar-day"><span>4</span></li>
+              <li class="calendar-day"><span>5</span></li>
+              <li class="calendar-day"><span>6</span></li>
+              <li class="calendar-day"><span>7</span></li>
+              <li class="calendar-day"><span>8</span></li>
+              <li class="calendar-day"><span>9</span></li>
+              <li class="calendar-day"><span>10</span></li>
+              <li class="calendar-day"><span>11</span></li>
+              <li class="calendar-day"><span>12</span></li>
+              <li class="calendar-day"><span>13</span></li>
+              <li class="calendar-day"><span>14</span></li>
+              <li class="calendar-day"><span>15</span></li>
+              <li class="calendar-day"><span>16</span></li>
+              <li class="calendar-day"><span>17</span></li>
+              <li class="calendar-day"><span>18</span></li>
+              <li class="calendar-day"><span>19</span></li>
+              <li class="calendar-day"><span>20</span></li>
+              <li class="calendar-day"><span>21</span></li>
+              <li class="calendar-day"><span>22</span></li>
+              <li class="calendar-day"><span>23</span></li>
+              <li class="calendar-day"><span>24</span></li>
+              <li class="calendar-day is-wedding">
+                <svg class="calendar-heart" viewBox="0 0 24 24" aria-hidden="true">
+                  <path
+                    d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+                <span>25</span>
+              </li>
+              <li class="calendar-day"><span>26</span></li>
+              <li class="calendar-day"><span>27</span></li>
+              <li class="calendar-day"><span>28</span></li>
+              <li class="calendar-day"><span>29</span></li>
+              <li class="calendar-day"><span>30</span></li>
+            </ol>
+          </div>
         </div>
       </section>
 
@@ -225,6 +317,7 @@
               </div>
             </div>
 
+            <p id="rsvp-error" class="rsvp-error" hidden role="alert"></p>
             <button type="submit" class="btn btn-primary btn-pill btn-block">Отправить анкету</button>
           </form>
         </div>

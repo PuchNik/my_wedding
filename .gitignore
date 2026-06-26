@@ -19,6 +19,9 @@ yarn-error.log*
 # env files
 .env*
 
+# RSVP responses (personal data)
+data/rsvp.json
+
 # vercel
 .vercel
 

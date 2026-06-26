@@ -2,7 +2,7 @@
 
 /* ===== Wedding data ===== */
 var wedding = {
-  dateISO: "2026-09-25T15:00:00+03:00",
+  dateISO: "2026-09-25T00:00:00+03:00",
 };
 
 var schedule = [
@@ -20,7 +20,16 @@ var faq = [
   },
   {
     q: "Какой дресс-код?",
-    a: "Пастельная и природная палитра: бежевый, терракотовый, оливковый, пыльно-розовый. Просим воздержаться от ярко-белого.",
+    dressCode: {
+      lead: "Пастельная и природная палитра",
+      colors: [
+        { label: "Бежевый", hex: "#D8CBB0" },
+        { label: "Терракотовый", hex: "#C07A5C" },
+        { label: "Оливковый", hex: "#8B8E6A" },
+        { label: "Пыльно-розовый", hex: "#D4A19A" },
+      ],
+      avoid: { label: "Ярко-белый", hex: "#F7F7F5" },
+    },
   },
   {
     q: "Будет ли трансфер?",
@@ -114,6 +123,35 @@ function initSchedule() {
 }
 
 /* ===== FAQ accordion ===== */
+function renderDressCode(data) {
+  var wrap = el("div", "dress-code");
+
+  wrap.appendChild(el("p", "dress-code-lead", data.lead));
+
+  var swatches = el("div", "dress-code-swatches");
+  data.colors.forEach(function (color) {
+    var item = el("div", "dress-code-swatch");
+    var chip = el("span", "dress-code-chip");
+    chip.style.backgroundColor = color.hex;
+    chip.setAttribute("aria-label", color.label);
+    chip.title = color.label;
+    item.appendChild(chip);
+    item.appendChild(el("span", "dress-code-label", color.label));
+    swatches.appendChild(item);
+  });
+  wrap.appendChild(swatches);
+
+  var avoid = el("div", "dress-code-avoid");
+  var avoidChip = el("span", "dress-code-chip dress-code-chip--avoid");
+  avoidChip.style.backgroundColor = data.avoid.hex;
+  avoidChip.setAttribute("aria-label", data.avoid.label);
+  avoid.appendChild(avoidChip);
+  avoid.appendChild(el("span", "dress-code-avoid-text", "Без ярко-белого"));
+  wrap.appendChild(avoid);
+
+  return wrap;
+}
+
 function initFaq() {
   var root = document.getElementById("accordion");
   if (!root) return;
@@ -130,7 +168,11 @@ function initFaq() {
     trigger.innerHTML = '<span class="q">' + item.q + "</span>" + plusIcon;
 
     var panel = el("div", "accordion-panel");
-    panel.appendChild(el("p", null, item.a));
+    if (item.dressCode) {
+      panel.appendChild(renderDressCode(item.dressCode));
+    } else {
+      panel.appendChild(el("p", null, item.a));
+    }
 
     trigger.addEventListener("click", function () {
       var open = wrap.classList.toggle("is-open");
@@ -150,7 +192,20 @@ function initRsvp() {
 
   var choices = form.querySelectorAll(".choice");
   var extra = document.getElementById("attending-extra");
+  var errorEl = document.getElementById("rsvp-error");
+  var submitBtn = form.querySelector('button[type="submit"]');
   var attending = "yes";
+
+  function setError(message) {
+    if (!errorEl) return;
+    if (message) {
+      errorEl.textContent = message;
+      errorEl.hidden = false;
+    } else {
+      errorEl.textContent = "";
+      errorEl.hidden = true;
+    }
+  }
 
   choices.forEach(function (btn) {
     btn.addEventListener("click", function () {
@@ -159,16 +214,47 @@ function initRsvp() {
         b.classList.toggle("is-active", b === btn);
       });
       extra.hidden = attending !== "yes";
+      setError("");
     });
   });
 
   form.addEventListener("submit", function (e) {
     e.preventDefault();
     if (!form.reportValidity()) return;
-    document.getElementById("rsvp-form-wrap").hidden = true;
-    var success = document.getElementById("rsvp-success");
-    success.hidden = false;
-    success.scrollIntoView({ behavior: "smooth", block: "center" });
+
+    var payload = {
+      name: form.querySelector("#name").value.trim(),
+      attending: attending === "yes" ? "будет" : "не будет",
+      guests: attending === "yes" ? Number(form.querySelector("#guests").value) : 0,
+      comment: form.querySelector("#note").value.trim(),
+    };
+
+    setError("");
+    submitBtn.disabled = true;
+
+    fetch("/api/rsvp", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    })
+      .then(function (res) {
+        return res.json().then(function (data) {
+          if (!res.ok) throw new Error(data.error || "Не удалось отправить анкету");
+          return data;
+        });
+      })
+      .then(function () {
+        document.getElementById("rsvp-form-wrap").hidden = true;
+        var success = document.getElementById("rsvp-success");
+        success.hidden = false;
+        success.scrollIntoView({ behavior: "smooth", block: "center" });
+      })
+      .catch(function (err) {
+        setError(err.message || "Не удалось отправить анкету. Попробуйте ещё раз.");
+      })
+      .finally(function () {
+        submitBtn.disabled = false;
+      });
   });
 }
 

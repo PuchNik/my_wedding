@@ -322,6 +322,189 @@ a {
   margin-top: 2.5rem;
 }
 
+/* ===== Calendar ===== */
+.calendar-section {
+  position: relative;
+  overflow: hidden;
+  padding: 5rem 0;
+  background:
+    radial-gradient(ellipse 55% 70% at 12% 45%, color-mix(in oklab, var(--primary) 10%, transparent), transparent 70%),
+    radial-gradient(ellipse 50% 65% at 88% 55%, color-mix(in oklab, var(--primary) 8%, transparent), transparent 70%),
+    color-mix(in oklab, var(--secondary) 45%, var(--background));
+}
+
+.calendar-section::before,
+.calendar-section::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid color-mix(in oklab, var(--primary) 14%, transparent);
+  pointer-events: none;
+}
+
+.calendar-section::before {
+  width: min(36rem, 90vw);
+  height: min(36rem, 90vw);
+  top: -14rem;
+  left: -10rem;
+}
+
+.calendar-section::after {
+  width: min(26rem, 70vw);
+  height: min(26rem, 70vw);
+  right: -8rem;
+  bottom: -10rem;
+}
+
+.calendar-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.calendar-bg-heart {
+  position: absolute;
+  color: var(--primary);
+  opacity: 0.12;
+}
+
+.calendar-bg-heart--1 {
+  top: 8%;
+  left: 6%;
+  width: clamp(5rem, 14vw, 9rem);
+  transform: rotate(-18deg);
+}
+
+.calendar-bg-heart--2 {
+  right: 8%;
+  bottom: 12%;
+  width: clamp(6rem, 16vw, 11rem);
+  transform: rotate(14deg);
+}
+
+.calendar-bg-heart--3 {
+  top: 50%;
+  right: 18%;
+  width: clamp(2.5rem, 6vw, 4rem);
+  opacity: 0.08;
+  transform: translateY(-50%) rotate(8deg);
+}
+
+.calendar-inner {
+  position: relative;
+  z-index: 1;
+}
+
+.calendar-caption {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.calendar-caption-text {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  color: var(--primary);
+}
+
+.calendar-card {
+  width: min(100%, 32rem);
+  margin-inline: auto;
+  padding: 2.75rem 2.5rem 2.5rem;
+  border: 1px solid var(--border);
+  border-radius: calc(var(--radius) * 2);
+  background: var(--card);
+  box-shadow: 0 1rem 2.5rem color-mix(in oklab, var(--foreground) 6%, transparent);
+}
+
+.calendar-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 1rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.calendar-month {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: clamp(2.5rem, 7vw, 3.25rem);
+  line-height: 1;
+  color: var(--foreground);
+}
+
+.calendar-year {
+  font-size: 1rem;
+  letter-spacing: 0.15em;
+  color: var(--muted-foreground);
+}
+
+.calendar-weekdays,
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  list-style: none;
+}
+
+.calendar-weekdays {
+  margin-top: 1.5rem;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--muted-foreground);
+}
+
+.calendar-weekdays span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 2.25rem;
+}
+
+.calendar-grid {
+  margin-top: 0.75rem;
+  gap: 0.25rem 0;
+}
+
+.calendar-day {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1;
+}
+
+.calendar-day span {
+  position: relative;
+  z-index: 1;
+  font-family: var(--font-serif);
+  font-size: clamp(1.125rem, 3vw, 1.5rem);
+  line-height: 1;
+  color: var(--foreground);
+}
+
+.calendar-day.is-empty {
+  pointer-events: none;
+}
+
+.calendar-day.is-wedding span {
+  font-weight: 600;
+  font-size: clamp(1.25rem, 3.5vw, 1.625rem);
+  color: var(--primary);
+}
+
+.calendar-heart {
+  position: absolute;
+  inset: 4%;
+  width: auto;
+  height: auto;
+  color: var(--primary);
+}
+
 /* ===== Countdown ===== */
 .countdown {
   border-top: 1px solid var(--border);
@@ -601,10 +784,101 @@ a {
   padding-bottom: 1.25rem;
 }
 
-.accordion-panel p {
+.accordion-panel > * {
   overflow: hidden;
+  min-height: 0;
+}
+
+.accordion-panel p {
   font-size: 0.875rem;
   color: var(--muted-foreground);
+}
+
+.dress-code-lead {
+  font-size: 0.875rem;
+  color: var(--muted-foreground);
+}
+
+.dress-code-swatches {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.75rem;
+  margin-top: 1.25rem;
+}
+
+.dress-code-swatch {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.dress-code-chip {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 9999px;
+  border: 1px solid color-mix(in oklab, var(--foreground) 10%, transparent);
+  box-shadow: inset 0 0 0 1px color-mix(in oklab, #fff 35%, transparent);
+}
+
+.dress-code-label {
+  font-size: 0.625rem;
+  text-align: center;
+  letter-spacing: 0.04em;
+  color: var(--muted-foreground);
+  line-height: 1.3;
+}
+
+.dress-code-avoid {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 1.25rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--border);
+}
+
+.dress-code-chip--avoid {
+  flex-shrink: 0;
+  width: 2.25rem;
+  height: 2.25rem;
+  aspect-ratio: auto;
+  position: relative;
+  border-color: color-mix(in oklab, var(--foreground) 18%, transparent);
+}
+
+.dress-code-chip--avoid::after {
+  content: "";
+  position: absolute;
+  inset: 18%;
+  background: linear-gradient(
+    135deg,
+    transparent calc(50% - 1px),
+    var(--primary) calc(50% - 1px),
+    var(--primary) calc(50% + 1px),
+    transparent calc(50% + 1px)
+  );
+}
+
+.dress-code-avoid-text {
+  font-size: 0.75rem;
+  color: var(--muted-foreground);
+}
+
+@media (min-width: 480px) {
+  .dress-code-swatches {
+    gap: 1rem;
+  }
+
+  .dress-code-label {
+    font-size: 0.6875rem;
+  }
+
+  .dress-code-chip--avoid {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
 }
 
 /* ===== RSVP ===== */
@@ -624,6 +898,12 @@ a {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+}
+
+.rsvp-error {
+  font-size: 0.875rem;
+  color: #a33;
+  text-align: center;
 }
 
 .field label,

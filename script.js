@@ -186,6 +186,11 @@ function initFaq() {
 }
 
 /* ===== RSVP form ===== */
+function getSupabaseRsvpUrl(baseUrl) {
+  var base = String(baseUrl).replace(/\/+$/, "").replace(/\/rest\/v1\/?$/, "");
+  return base + "/rest/v1/rsvp";
+}
+
 function saveRsvp(payload) {
   var config = window.RSVP_CONFIG || { storage: "local" };
 
@@ -194,7 +199,7 @@ function saveRsvp(payload) {
       return Promise.reject(new Error("Форма не настроена для приёма ответов"));
     }
 
-    return fetch(config.supabase.url + "/rest/v1/rsvp", {
+    return fetch(getSupabaseRsvpUrl(config.supabase.url), {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

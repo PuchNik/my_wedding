@@ -2,6 +2,7 @@
 // На GitHub Pages — ответы в Supabase (см. supabase/schema.sql)
 //
 // Замените url и anonKey на данные из Supabase → Project Settings → API
+// url — только Project URL, без /rest/v1 (например https://xxxxx.supabase.co)
 
 window.RSVP_CONFIG = (function () {
   var isLocal =

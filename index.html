@@ -15,7 +15,7 @@
       href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,300;1,400;1,500&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css?v=14" />
+    <link rel="stylesheet" href="styles.css?v=25" />
   </head>
   <body class="intro-active">
     <!-- Intro -->
@@ -39,14 +39,6 @@
     </div>
 
     <div id="site-content" inert aria-hidden="true">
-    <!-- Header -->
-    <header class="site-header" id="site-header">
-      <div class="container header-inner">
-        <a href="#top" class="logo">Н <span class="amp">&amp;</span> А</a>
-        <a href="#rsvp" class="btn btn-primary btn-pill header-cta">Подтвердить</a>
-      </div>
-    </header>
-
     <main id="top">
       <!-- Hero -->
       <section class="hero">
@@ -60,7 +52,7 @@
       </section>
 
       <!-- Calendar -->
-      <section class="calendar-section reveal" aria-label="Дата свадьбы">
+      <section class="calendar-section" aria-label="Дата свадьбы">
         <div class="calendar-bg" aria-hidden="true">
           <svg class="calendar-bg-heart calendar-bg-heart--1" viewBox="0 0 24 24">
             <path
@@ -86,7 +78,7 @@
           </svg>
         </div>
         <div class="container calendar-inner">
-          <p class="calendar-caption">
+          <p class="calendar-caption reveal">
             <span class="rule rule-dark"></span>
             <span class="calendar-caption-text">Наш день</span>
             <span class="rule rule-dark"></span>
@@ -153,7 +145,6 @@
         </div>
       </section>
 
-
       <!-- Story -->
       <section id="story" class="story container narrow center reveal">
         <p class="eyebrow eyebrow-primary">Дорогие друзья</p>
@@ -169,21 +160,15 @@
             людей. Ваше присутствие сделает этот день по-настоящему незабываемым.
           </p>
         </div>
-        <div class="story-sign">
-          <span class="rule rule-dark"></span>
-          <span class="story-sign-text">с любовью</span>
-          <span class="rule rule-dark"></span>
-        </div>
       </section>
 
       <!-- Details -->
       <section id="details" class="details reveal">
         <div class="container details-grid">
           <div class="details-photo">
-            <img src="assets/wedding-venue.png" alt="Площадка торжества — Ресторан «Дюна»" />
+            <img src="assets/Duna.jpg" alt="Площадка торжества — Ресторан «Дюна»" />
           </div>
           <div class="details-info">
-            <p class="eyebrow eyebrow-primary">Когда и где</p>
             <h2 class="section-title">Детали торжества</h2>
             <dl class="details-list">
               <div class="details-item">
@@ -193,7 +178,7 @@
                 <div>
                   <dt>Дата</dt>
                   <dd class="details-value">25 сентября 2026</dd>
-                  <dd class="details-sub">суббота</dd>
+                  <dd class="details-sub">пятница</dd>
                 </div>
               </div>
               <div class="details-item">
@@ -213,7 +198,6 @@
                 <div>
                   <dt>Место</dt>
                   <dd class="details-value">Ресторан «Дюна»</dd>
-                  <dd class="details-sub">Москва</dd>
                 </div>
               </div>
             </dl>
@@ -244,21 +228,17 @@
           <div class="reveal">
             <p class="eyebrow eyebrow-primary">Дресс-код</p>
             <h2 class="section-title">Стиль праздника</h2>
+            <div class="dress-code-palette" aria-label="Цветовая гамма праздника">
+              <span class="dress-code-color" style="--swatch: #015649"></span>
+              <span class="dress-code-color" style="--swatch: #7e1525"></span>
+              <span class="dress-code-color" style="--swatch: #a63a03"></span>
+              <span class="dress-code-color" style="--swatch: #f27f0d"></span>
+              <span class="dress-code-color" style="--swatch: #cdab91"></span>
+            </div>
             <p class="dress-code-intro">
               Мы постарались продумать красоту нашего торжества, и будем рады, если ваши наряды будут
               созвучны цветовой гамме праздника
             </p>
-          </div>
-          <div class="dress-code-palette" aria-label="Цветовая гамма праздника">
-            <span class="dress-code-color" style="--swatch: #015649"></span>
-            <span class="dress-code-color" style="--swatch: #7e1525"></span>
-            <span class="dress-code-color" style="--swatch: #a63a03"></span>
-            <span class="dress-code-color" style="--swatch: #f27f0d"></span>
-            <span class="dress-code-color" style="--swatch: #cdab91"></span>
-          </div>
-          <div class="dress-code-notes">
-            <p>Для прекрасных дам рекомендуются вечерние платья.</p>
-            <p>Для мужчин — рубашка и брюки в праздничном деловом стиле.</p>
           </div>
         </div>
       </section>
@@ -297,8 +277,8 @@
                 </select>
               </div>
               <div class="field">
-                <label for="note">Пожелания по меню или комментарий</label>
-                <textarea id="note" name="note" rows="3" placeholder="Аллергии, вегетарианство, особые пожелания…"></textarea>
+                <label for="note">Уточнения и иные комментарии</label>
+                <textarea id="note" name="note" rows="3" placeholder="Аллергия…"></textarea>
               </div>
             </div>
 
@@ -317,19 +297,6 @@
             просто напишите нам.
           </p>
           <svg class="success-heart" viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-        </div>
-      </section>
-
-      <!-- Countdown -->
-      <section class="countdown reveal">
-        <div class="container">
-          <p class="eyebrow eyebrow-muted center">До торжества осталось</p>
-          <div class="countdown-grid" id="countdown">
-            <div class="countdown-unit"><span class="countdown-num" data-unit="days">--</span><span class="countdown-label">дней</span></div>
-            <div class="countdown-unit"><span class="countdown-num" data-unit="hours">--</span><span class="countdown-label">часов</span></div>
-            <div class="countdown-unit"><span class="countdown-num" data-unit="minutes">--</span><span class="countdown-label">минут</span></div>
-            <div class="countdown-unit"><span class="countdown-num" data-unit="seconds">--</span><span class="countdown-label">секунд</span></div>
-          </div>
         </div>
       </section>
 

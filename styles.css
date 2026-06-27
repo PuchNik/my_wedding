@@ -173,40 +173,6 @@ a {
   color: var(--foreground);
 }
 
-/* ===== Header ===== */
-.site-header {
-  position: sticky;
-  top: 0;
-  z-index: 50;
-  border-bottom: 1px solid color-mix(in oklab, var(--border) 60%, transparent);
-  background: color-mix(in oklab, var(--background) 80%, transparent);
-  backdrop-filter: blur(12px);
-}
-
-.header-inner {
-  display: flex;
-  height: 4rem;
-  align-items: center;
-  justify-content: space-between;
-  max-width: 64rem;
-}
-
-.logo {
-  font-size: 1.25rem;
-  letter-spacing: 0.05em;
-}
-
-.logo .amp {
-  color: var(--primary);
-}
-
-.header-cta {
-  display: inline-block;
-  padding: 0.5rem 1.25rem;
-  text-transform: none;
-  letter-spacing: normal;
-}
-
 /* ===== Hero ===== */
 .hero {
   position: relative;
@@ -237,18 +203,18 @@ a {
   z-index: 10;
   width: 100%;
   max-width: none;
-  padding: calc(4rem + 1.25rem) 1rem 2rem;
+  padding: 3rem 1rem 2rem;
   color: #fff;
 }
 
 .hero-title {
-  margin: 0 auto;
+  margin-top: 0;
   width: 100%;
   max-width: 100%;
-  font-weight: var(--font-weight);
+  font-weight: 10;
   font-size: clamp(1.35rem, 10.5vw, 5.5rem);
   line-height: 1;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.1em;
   white-space: nowrap;
 }
 
@@ -321,7 +287,25 @@ a {
 .calendar-bg-heart {
   position: absolute;
   color: var(--primary);
+  opacity: 0;
+  transition:
+    opacity 1s ease,
+    transform 1s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.calendar-section.is-visible .calendar-bg-heart--1 {
   opacity: 0.12;
+  transition-delay: 0.15s;
+}
+
+.calendar-section.is-visible .calendar-bg-heart--2 {
+  opacity: 0.12;
+  transition-delay: 0.35s;
+}
+
+.calendar-section.is-visible .calendar-bg-heart--3 {
+  opacity: 0.08;
+  transition-delay: 0.55s;
 }
 
 .calendar-bg-heart--1 {
@@ -342,7 +326,6 @@ a {
   top: 50%;
   right: 18%;
   width: clamp(2.5rem, 6vw, 4rem);
-  opacity: 0.08;
   transform: translateY(-50%) rotate(8deg);
 }
 
@@ -372,6 +355,20 @@ a {
   border-radius: calc(var(--radius) * 2);
   background: var(--card);
   box-shadow: 0 1rem 2.5rem color-mix(in oklab, var(--foreground) 6%, transparent);
+  opacity: 0;
+  transform: translateY(1.75rem);
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.calendar-card.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+.calendar-card.is-visible .calendar-weekdays {
+  opacity: 1;
 }
 
 .calendar-header {
@@ -410,6 +407,8 @@ a {
   text-transform: uppercase;
   letter-spacing: 0.12em;
   color: var(--muted-foreground);
+  opacity: 0;
+  transition: opacity 0.7s ease 0.25s;
 }
 
 .calendar-weekdays span {
@@ -445,6 +444,33 @@ a {
   pointer-events: none;
 }
 
+.calendar-day:not(.is-empty) {
+  opacity: 0;
+  transform: scale(0.88);
+  transition:
+    opacity 0.55s ease,
+    transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.calendar-day.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+.calendar-day.is-wedding .calendar-heart {
+  opacity: 0;
+  transform: scale(0);
+  transition:
+    opacity 0.6s ease 0.12s,
+    transform 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.12s;
+}
+
+.calendar-day.is-wedding.is-visible .calendar-heart {
+  opacity: 1;
+  transform: scale(1);
+  animation: calendar-heart-alive 2.6s ease-in-out infinite;
+}
+
 .calendar-day.is-wedding span {
   font-weight: var(--font-weight);
   font-size: clamp(1.25rem, 3.5vw, 1.625rem);
@@ -457,6 +483,31 @@ a {
   width: auto;
   height: auto;
   color: var(--primary);
+  transform-origin: 50% 58%;
+  backface-visibility: hidden;
+}
+
+@keyframes calendar-heart-alive {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  14% {
+    transform: scale(1.06);
+  }
+
+  28% {
+    transform: scale(1);
+  }
+
+  42% {
+    transform: scale(1.04);
+  }
+
+  56% {
+    transform: scale(1);
+  }
 }
 
 /* ===== Countdown ===== */
@@ -1115,14 +1166,39 @@ body.intro-complete #site-content {
 
   .reveal,
   .timeline-item,
-  .dress-code-color {
+  .dress-code-color,
+  .calendar-card,
+  .calendar-day:not(.is-empty) {
     opacity: 1;
     transform: none;
   }
 
   .timeline-item,
-  .dress-code-color {
+  .dress-code-color,
+  .calendar-card,
+  .calendar-day:not(.is-empty) {
     transition: none;
+  }
+
+  .calendar-section.is-visible .calendar-bg-heart--1 {
+    opacity: 0.12;
+  }
+
+  .calendar-section.is-visible .calendar-bg-heart--2 {
+    opacity: 0.12;
+  }
+
+  .calendar-section.is-visible .calendar-bg-heart--3 {
+    opacity: 0.08;
+  }
+
+  .calendar-card.is-visible .calendar-weekdays {
+    opacity: 1;
+  }
+
+  .calendar-day.is-wedding.is-visible .calendar-heart {
+    transform: scale(1);
+    animation: none;
   }
 }
 

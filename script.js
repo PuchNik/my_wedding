@@ -381,6 +381,75 @@ function initDressCodePaletteReveal() {
   });
 }
 
+function initCalendarReveal() {
+  var section = document.querySelector(".calendar-section");
+  if (!section) return;
+
+  var card = section.querySelector(".calendar-card");
+  var days = section.querySelectorAll(".calendar-day:not(.is-empty)");
+
+  runWhenIntroDone(function () {
+    function showAll() {
+      section.classList.add("is-visible");
+      if (card) card.classList.add("is-visible");
+      days.forEach(function (day) {
+        day.classList.add("is-visible");
+      });
+    }
+
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      showAll();
+      return;
+    }
+
+    if (!("IntersectionObserver" in window)) {
+      showAll();
+      return;
+    }
+
+    var sectionObserver = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          section.classList.add("is-visible");
+          sectionObserver.unobserve(entry.target);
+        });
+      },
+      { threshold: 0.1, rootMargin: "0px 0px -10% 0px" }
+    );
+    sectionObserver.observe(section);
+
+    if (card) {
+      var cardObserver = new IntersectionObserver(
+        function (entries) {
+          entries.forEach(function (entry) {
+            if (!entry.isIntersecting) return;
+            card.classList.add("is-visible");
+            cardObserver.unobserve(entry.target);
+          });
+        },
+        { threshold: 0.15, rootMargin: "0px 0px -15% 0px" }
+      );
+      cardObserver.observe(card);
+    }
+
+    var dayObserver = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("is-visible");
+          dayObserver.unobserve(entry.target);
+        });
+      },
+      { threshold: 0.15, rootMargin: "0px 0px -15% 0px" }
+    );
+
+    days.forEach(function (day) {
+      dayObserver.observe(day);
+    });
+  });
+}
+
 function initReveal() {
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
     document.querySelectorAll(".reveal").forEach(function (el) {
@@ -419,6 +488,7 @@ function initReveal() {
 document.addEventListener("DOMContentLoaded", function () {
   initIntro();
   initCountdown();
+  initCalendarReveal();
   initSchedule();
   initDressCodePaletteReveal();
   initRsvp();

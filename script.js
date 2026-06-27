@@ -13,61 +13,12 @@ var schedule = [
   { time: "22:00", title: "Вечеринка", desc: "Танцы до последнего гостя и праздничный салют." },
 ];
 
-var faq = [
-  {
-    q: "Можно ли прийти с детьми?",
-    a: "Мы очень любим детей, но хотим, чтобы этот вечер вы провели расслабленно. Если планируете прийти с малышом — напишите нам, мы всё организуем.",
-  },
-  {
-    q: "Какой дресс-код?",
-    dressCode: {
-      lead: "Пастельная и природная палитра",
-      colors: [
-        { label: "Бежевый", hex: "#D8CBB0" },
-        { label: "Терракотовый", hex: "#C07A5C" },
-        { label: "Оливковый", hex: "#8B8E6A" },
-        { label: "Пыльно-розовый", hex: "#D4A19A" },
-      ],
-      avoid: { label: "Ярко-белый", hex: "#F7F7F5" },
-    },
-  },
-  {
-    q: "Будет ли трансфер?",
-    a: "Да, в 14:00 от станции метро будет организован автобус до усадьбы и обратно после праздника.",
-  },
-  {
-    q: "Что дарить?",
-    a: "Самый главный подарок — это вы рядом. Если хочется большего, мы будем благодарны за вклад в наше свадебное путешествие.",
-  },
-];
-
 /* ===== Helpers ===== */
 function el(tag, className, html) {
   var node = document.createElement(tag);
   if (className) node.className = className;
   if (html != null) node.innerHTML = html;
   return node;
-}
-
-/* ===== Mobile menu ===== */
-function initMenu() {
-  var toggle = document.getElementById("menu-toggle");
-  var nav = document.getElementById("nav-mobile");
-  if (!toggle || !nav) return;
-
-  function setOpen(open) {
-    toggle.setAttribute("aria-expanded", String(open));
-    toggle.setAttribute("aria-label", open ? "Закрыть меню" : "Открыть меню");
-    nav.hidden = !open;
-  }
-
-  toggle.addEventListener("click", function () {
-    setOpen(toggle.getAttribute("aria-expanded") !== "true");
-  });
-
-  nav.addEventListener("click", function (e) {
-    if (e.target.closest("a")) setOpen(false);
-  });
 }
 
 /* ===== Countdown ===== */
@@ -120,69 +71,8 @@ function initSchedule() {
     item.appendChild(content);
     list.appendChild(item);
   });
-}
 
-/* ===== FAQ accordion ===== */
-function renderDressCode(data) {
-  var wrap = el("div", "dress-code");
-
-  wrap.appendChild(el("p", "dress-code-lead", data.lead));
-
-  var swatches = el("div", "dress-code-swatches");
-  data.colors.forEach(function (color) {
-    var item = el("div", "dress-code-swatch");
-    var chip = el("span", "dress-code-chip");
-    chip.style.backgroundColor = color.hex;
-    chip.setAttribute("aria-label", color.label);
-    chip.title = color.label;
-    item.appendChild(chip);
-    item.appendChild(el("span", "dress-code-label", color.label));
-    swatches.appendChild(item);
-  });
-  wrap.appendChild(swatches);
-
-  var avoid = el("div", "dress-code-avoid");
-  var avoidChip = el("span", "dress-code-chip dress-code-chip--avoid");
-  avoidChip.style.backgroundColor = data.avoid.hex;
-  avoidChip.setAttribute("aria-label", data.avoid.label);
-  avoid.appendChild(avoidChip);
-  avoid.appendChild(el("span", "dress-code-avoid-text", "Без ярко-белого"));
-  wrap.appendChild(avoid);
-
-  return wrap;
-}
-
-function initFaq() {
-  var root = document.getElementById("accordion");
-  if (!root) return;
-
-  var plusIcon =
-    '<svg class="accordion-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>';
-
-  faq.forEach(function (item, i) {
-    var wrap = el("div", "accordion-item" + (i === 0 ? " is-open" : ""));
-
-    var trigger = el("button", "accordion-trigger");
-    trigger.type = "button";
-    trigger.setAttribute("aria-expanded", String(i === 0));
-    trigger.innerHTML = '<span class="q">' + item.q + "</span>" + plusIcon;
-
-    var panel = el("div", "accordion-panel");
-    if (item.dressCode) {
-      panel.appendChild(renderDressCode(item.dressCode));
-    } else {
-      panel.appendChild(el("p", null, item.a));
-    }
-
-    trigger.addEventListener("click", function () {
-      var open = wrap.classList.toggle("is-open");
-      trigger.setAttribute("aria-expanded", String(open));
-    });
-
-    wrap.appendChild(trigger);
-    wrap.appendChild(panel);
-    root.appendChild(wrap);
-  });
+  initTimelineReveal();
 }
 
 /* ===== RSVP form ===== */
@@ -331,11 +221,205 @@ function initRsvp() {
   });
 }
 
+/* ===== Intro ===== */
+function finishIntro(intro, site) {
+  intro.classList.add("is-done");
+  document.body.classList.remove("intro-active");
+  document.body.classList.add("intro-complete");
+
+  if (site) {
+    site.removeAttribute("inert");
+    site.removeAttribute("aria-hidden");
+  }
+
+  window.setTimeout(function () {
+    intro.remove();
+    initReveal();
+  }, 800);
+}
+
+function skipIntro(intro, site) {
+  if (intro) intro.remove();
+  document.body.classList.remove("intro-active");
+  document.body.classList.add("intro-complete");
+
+  if (site) {
+    site.removeAttribute("inert");
+    site.removeAttribute("aria-hidden");
+  }
+
+  initReveal();
+}
+
+function initIntro() {
+  var intro = document.getElementById("intro");
+  var envelope = document.getElementById("envelope");
+  var site = document.getElementById("site-content");
+  if (!intro || !envelope) {
+    skipIntro(intro, site);
+    return;
+  }
+
+  if (sessionStorage.getItem("weddingIntroSeen") === "1") {
+    skipIntro(intro, site);
+    return;
+  }
+
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    skipIntro(intro, site);
+    return;
+  }
+
+  envelope.addEventListener("click", function () {
+    if (intro.classList.contains("is-opening")) return;
+
+    intro.classList.add("is-opening");
+
+    window.setTimeout(function () {
+      intro.classList.add("is-revealing");
+    }, 700);
+
+    window.setTimeout(function () {
+      sessionStorage.setItem("weddingIntroSeen", "1");
+      finishIntro(intro, site);
+    }, 2100);
+  });
+}
+
+function runWhenIntroDone(fn) {
+  if (
+    document.body.classList.contains("intro-complete") ||
+    !document.body.classList.contains("intro-active")
+  ) {
+    fn();
+    return;
+  }
+
+  var bodyObserver = new MutationObserver(function () {
+    if (!document.body.classList.contains("intro-complete")) return;
+    bodyObserver.disconnect();
+    fn();
+  });
+
+  bodyObserver.observe(document.body, { attributes: true, attributeFilter: ["class"] });
+}
+
+function initTimelineReveal() {
+  var timeline = document.getElementById("timeline");
+  if (!timeline) return;
+
+  var items = timeline.querySelectorAll(".timeline-item");
+  if (!items.length) return;
+
+  runWhenIntroDone(function () {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      items.forEach(function (item) {
+        item.classList.add("is-visible");
+      });
+      return;
+    }
+
+    if (!("IntersectionObserver" in window)) {
+      items.forEach(function (item) {
+        item.classList.add("is-visible");
+      });
+      return;
+    }
+
+    var observer = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        });
+      },
+      { threshold: 0.15, rootMargin: "0px 0px -15% 0px" }
+    );
+
+    items.forEach(function (item) {
+      observer.observe(item);
+    });
+  });
+}
+
+function initDressCodePaletteReveal() {
+  var palette = document.querySelector(".dress-code-palette");
+  if (!palette) return;
+
+  var colors = palette.querySelectorAll(".dress-code-color");
+  if (!colors.length) return;
+
+  runWhenIntroDone(function () {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      colors.forEach(function (color) {
+        color.classList.add("is-visible");
+      });
+      return;
+    }
+
+    function update() {
+      var rect = palette.getBoundingClientRect();
+      var vh = window.innerHeight;
+      var revealStart = vh * 0.92;
+      var revealEnd = vh * 0.35;
+      var span = revealStart - revealEnd;
+      if (span <= 0) return;
+
+      var progress = (revealStart - rect.top) / span;
+      progress = Math.max(0, Math.min(1, progress));
+      var visibleCount = Math.ceil(progress * colors.length);
+
+      colors.forEach(function (color, i) {
+        if (i < visibleCount) color.classList.add("is-visible");
+      });
+    }
+
+    update();
+    window.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update, { passive: true });
+  });
+}
+
+function initReveal() {
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    document.querySelectorAll(".reveal").forEach(function (el) {
+      el.classList.add("is-visible");
+    });
+    return;
+  }
+
+  var items = document.querySelectorAll(".reveal");
+  if (!items.length) return;
+
+  if (!("IntersectionObserver" in window)) {
+    items.forEach(function (el) {
+      el.classList.add("is-visible");
+    });
+    return;
+  }
+
+  var observer = new IntersectionObserver(
+    function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("is-visible");
+        observer.unobserve(entry.target);
+      });
+    },
+    { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
+  );
+
+  items.forEach(function (el) {
+    observer.observe(el);
+  });
+}
+
 /* ===== Init ===== */
 document.addEventListener("DOMContentLoaded", function () {
-  initMenu();
+  initIntro();
   initCountdown();
   initSchedule();
-  initFaq();
+  initDressCodePaletteReveal();
   initRsvp();
 });

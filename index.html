@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#f5f1e8" />
+    <meta name="theme-color" content="#ebe0d0" />
     <title>Никита и Анна — Приглашение на свадьбу</title>
     <meta
       name="description"
@@ -12,72 +12,55 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Manrope:wght@400;500;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,300;1,400;1,500&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="styles.css?v=14" />
   </head>
-  <body>
+  <body class="intro-active">
+    <!-- Intro -->
+    <div id="intro" class="intro">
+      <div class="intro-inner">
+        <p class="intro-hint">Нажмите на конверт</p>
+        <button type="button" class="envelope" id="envelope" aria-label="Открыть приглашение">
+          <span class="envelope-shadow" aria-hidden="true"></span>
+          <span class="envelope-letter">
+            <span class="letter-content">
+              <span class="letter-eyebrow">Приглашение</span>
+              <span class="letter-names">Никита и Анна</span>
+              <span class="letter-date">25 сентября 2026</span>
+            </span>
+          </span>
+          <span class="envelope-body" aria-hidden="true"></span>
+          <span class="envelope-pocket" aria-hidden="true"></span>
+          <span class="envelope-flap" aria-hidden="true"></span>
+        </button>
+      </div>
+    </div>
+
+    <div id="site-content" inert aria-hidden="true">
     <!-- Header -->
     <header class="site-header" id="site-header">
       <div class="container header-inner">
         <a href="#top" class="logo">Н <span class="amp">&amp;</span> А</a>
-
-        <nav class="nav-desktop" aria-label="Основная навигация">
-          <a href="#story">О нас</a>
-          <a href="#details">Детали</a>
-          <a href="#schedule">Программа</a>
-          <a href="#faq">Вопросы</a>
-          <a href="#rsvp">Анкета</a>
-        </nav>
-
         <a href="#rsvp" class="btn btn-primary btn-pill header-cta">Подтвердить</a>
-
-        <button
-          type="button"
-          class="menu-toggle"
-          id="menu-toggle"
-          aria-label="Открыть меню"
-          aria-expanded="false"
-          aria-controls="nav-mobile"
-        >
-          <svg class="icon-menu" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-          <svg class="icon-close" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-        </button>
       </div>
-
-      <nav class="nav-mobile" id="nav-mobile" aria-label="Мобильная навигация" hidden>
-        <ul>
-          <li><a href="#story">О нас</a></li>
-          <li><a href="#details">Детали</a></li>
-          <li><a href="#schedule">Программа</a></li>
-          <li><a href="#faq">Вопросы</a></li>
-          <li><a href="#rsvp">Анкета</a></li>
-          <li><a href="#rsvp" class="btn btn-primary btn-pill">Подтвердить</a></li>
-        </ul>
-      </nav>
     </header>
 
     <main id="top">
       <!-- Hero -->
       <section class="hero">
-        <img src="assets/wedding-hero.png" alt="Пара, идущая по залитому солнцем полю" class="hero-bg" />
+        <img src="assets/DSC07213.jpg" alt="Пара, идущая по залитому солнцем полю" class="hero-bg" />
         <div class="hero-overlay"></div>
         <div class="hero-content">
           <h1 class="hero-title">
-            Никита<span class="amp-italic">и</span>Анна
+            <span class="amp-italic">Никита и Анна</span>
           </h1>
-          <div class="hero-date">
-            <span class="rule"></span>
-            25 сентября 2026
-            <span class="rule"></span>
-          </div>
-          <a href="#rsvp" class="btn btn-outline-light btn-pill hero-cta">Подтвердить присутствие</a>
         </div>
       </section>
 
       <!-- Calendar -->
-      <section class="calendar-section" aria-label="Дата свадьбы">
+      <section class="calendar-section reveal" aria-label="Дата свадьбы">
         <div class="calendar-bg" aria-hidden="true">
           <svg class="calendar-bg-heart calendar-bg-heart--1" viewBox="0 0 24 24">
             <path
@@ -170,21 +153,9 @@
         </div>
       </section>
 
-      <!-- Countdown -->
-      <section class="countdown">
-        <div class="container">
-          <p class="eyebrow eyebrow-muted center">До торжества осталось</p>
-          <div class="countdown-grid" id="countdown">
-            <div class="countdown-unit"><span class="countdown-num" data-unit="days">--</span><span class="countdown-label">дней</span></div>
-            <div class="countdown-unit"><span class="countdown-num" data-unit="hours">--</span><span class="countdown-label">часов</span></div>
-            <div class="countdown-unit"><span class="countdown-num" data-unit="minutes">--</span><span class="countdown-label">минут</span></div>
-            <div class="countdown-unit"><span class="countdown-num" data-unit="seconds">--</span><span class="countdown-label">секунд</span></div>
-          </div>
-        </div>
-      </section>
 
       <!-- Story -->
-      <section id="story" class="story container narrow center">
+      <section id="story" class="story container narrow center reveal">
         <p class="eyebrow eyebrow-primary">Дорогие друзья</p>
         <h2 class="section-title">Мы приглашаем вас разделить с нами этот день</h2>
         <div class="story-text">
@@ -206,7 +177,7 @@
       </section>
 
       <!-- Details -->
-      <section id="details" class="details">
+      <section id="details" class="details reveal">
         <div class="container details-grid">
           <div class="details-photo">
             <img src="assets/wedding-venue.png" alt="Площадка торжества — Ресторан «Дюна»" />
@@ -260,26 +231,40 @@
 
       <!-- Schedule -->
       <section id="schedule" class="schedule container narrow">
-        <div class="center">
+        <div class="center reveal">
           <p class="eyebrow eyebrow-primary">Расписание дня</p>
           <h2 class="section-title">Программа праздника</h2>
         </div>
         <ol class="timeline" id="timeline"></ol>
       </section>
 
-      <!-- FAQ -->
-      <section id="faq" class="faq">
-        <div class="container faq-inner">
-          <div class="center">
-            <p class="eyebrow eyebrow-primary">Полезно знать</p>
-            <h2 class="section-title">Частые вопросы</h2>
+      <!-- Dress code -->
+      <section id="dress-code" class="dress-code-section">
+        <div class="container dress-code-inner narrow center">
+          <div class="reveal">
+            <p class="eyebrow eyebrow-primary">Дресс-код</p>
+            <h2 class="section-title">Стиль праздника</h2>
+            <p class="dress-code-intro">
+              Мы постарались продумать красоту нашего торжества, и будем рады, если ваши наряды будут
+              созвучны цветовой гамме праздника
+            </p>
           </div>
-          <div class="accordion" id="accordion"></div>
+          <div class="dress-code-palette" aria-label="Цветовая гамма праздника">
+            <span class="dress-code-color" style="--swatch: #015649"></span>
+            <span class="dress-code-color" style="--swatch: #7e1525"></span>
+            <span class="dress-code-color" style="--swatch: #a63a03"></span>
+            <span class="dress-code-color" style="--swatch: #f27f0d"></span>
+            <span class="dress-code-color" style="--swatch: #cdab91"></span>
+          </div>
+          <div class="dress-code-notes">
+            <p>Для прекрасных дам рекомендуются вечерние платья.</p>
+            <p>Для мужчин — рубашка и брюки в праздничном деловом стиле.</p>
+          </div>
         </div>
       </section>
 
       <!-- RSVP -->
-      <section id="rsvp" class="rsvp container">
+      <section id="rsvp" class="rsvp container reveal">
         <div id="rsvp-form-wrap">
           <div class="center">
             <p class="eyebrow eyebrow-primary">Будете с нами?</p>
@@ -334,6 +319,20 @@
           <svg class="success-heart" viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
         </div>
       </section>
+
+      <!-- Countdown -->
+      <section class="countdown reveal">
+        <div class="container">
+          <p class="eyebrow eyebrow-muted center">До торжества осталось</p>
+          <div class="countdown-grid" id="countdown">
+            <div class="countdown-unit"><span class="countdown-num" data-unit="days">--</span><span class="countdown-label">дней</span></div>
+            <div class="countdown-unit"><span class="countdown-num" data-unit="hours">--</span><span class="countdown-label">часов</span></div>
+            <div class="countdown-unit"><span class="countdown-num" data-unit="minutes">--</span><span class="countdown-label">минут</span></div>
+            <div class="countdown-unit"><span class="countdown-num" data-unit="seconds">--</span><span class="countdown-label">секунд</span></div>
+          </div>
+        </div>
+      </section>
+
     </main>
 
     <!-- Footer -->
@@ -342,6 +341,7 @@
       <p class="footer-meta">25 сентября 2026 · Москва</p>
       <p class="footer-note">С любовью ждём вас на нашем празднике</p>
     </footer>
+    </div>
 
     <script src="config.js"></script>
     <script src="script.js"></script>

@@ -277,12 +277,12 @@ function initIntro() {
 
     window.setTimeout(function () {
       intro.classList.add("is-revealing");
-    }, 700);
+    }, 850);
 
     window.setTimeout(function () {
       sessionStorage.setItem("weddingIntroSeen", "1");
       finishIntro(intro, site);
-    }, 2100);
+    }, 2300);
   });
 }
 

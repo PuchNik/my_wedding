@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#ebe0d0" />
-    <title>Никита и Анна — Приглашение на свадьбу</title>
+    <title>Вы приглашены</title>
     <meta
       name="description"
       content="Мы рады пригласить вас разделить с нами один из самых важных дней нашей жизни — 25 сентября 2026 года."
@@ -15,14 +15,14 @@
       href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,300;1,400;1,500&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css?v=25" />
+    <link rel="stylesheet" href="styles.css?v=39" />
   </head>
   <body class="intro-active">
     <!-- Intro -->
     <div id="intro" class="intro">
       <div class="intro-inner">
-        <p class="intro-hint">Нажмите на конверт</p>
-        <button type="button" class="envelope" id="envelope" aria-label="Открыть приглашение">
+        <p class="intro-hint">Откройте приглашение</p>
+        <button type="button" class="envelope envelope--classic" id="envelope" aria-label="Открыть приглашение">
           <span class="envelope-shadow" aria-hidden="true"></span>
           <span class="envelope-letter">
             <span class="letter-content">
@@ -31,9 +31,35 @@
               <span class="letter-date">25 сентября 2026</span>
             </span>
           </span>
-          <span class="envelope-body" aria-hidden="true"></span>
-          <span class="envelope-pocket" aria-hidden="true"></span>
-          <span class="envelope-flap" aria-hidden="true"></span>
+          <svg class="envelope-layer envelope-layer--body" viewBox="0 0 400 280" aria-hidden="true">
+            <rect class="env-body" x="8" y="8" width="384" height="264" rx="2" />
+          </svg>
+          <svg class="envelope-layer envelope-layer--panels" viewBox="0 0 400 280" aria-hidden="true">
+            <path class="env-panel env-panel--left" d="M 8 8 L 8 272 L 200 132 Z" />
+            <path class="env-panel env-panel--right" d="M 392 8 L 392 272 L 200 132 Z" />
+          </svg>
+          <svg class="envelope-layer envelope-layer--pocket" viewBox="0 0 400 280" aria-hidden="true">
+            <path class="env-pocket" d="M 8 272 L 392 272 L 200 132 Z" />
+          </svg>
+          <svg class="envelope-layer envelope-layer--creases" viewBox="0 0 400 280" aria-hidden="true">
+            <line class="env-crease" x1="8" y1="272" x2="200" y2="132" />
+            <line class="env-crease" x1="392" y1="272" x2="200" y2="132" />
+            <line class="env-crease env-crease--flap" x1="8" y1="8" x2="200" y2="132" />
+            <line class="env-crease env-crease--flap" x1="392" y1="8" x2="200" y2="132" />
+          </svg>
+          <span class="envelope-flap" aria-hidden="true">
+            <svg viewBox="0 0 400 280" aria-hidden="true">
+              <path class="env-flap" d="M 8 8 L 392 8 L 200 132 Z" />
+            </svg>
+          </span>
+          <span class="envelope-seal" aria-hidden="true">
+            <span class="envelope-seal-disc"></span>
+            <svg class="envelope-seal-heart" viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"
+              />
+            </svg>
+          </span>
         </button>
       </div>
     </div>
@@ -229,11 +255,31 @@
             <p class="eyebrow eyebrow-primary">Дресс-код</p>
             <h2 class="section-title">Стиль праздника</h2>
             <div class="dress-code-palette" aria-label="Цветовая гамма праздника">
-              <span class="dress-code-color" style="--swatch: #015649"></span>
-              <span class="dress-code-color" style="--swatch: #7e1525"></span>
-              <span class="dress-code-color" style="--swatch: #a63a03"></span>
-              <span class="dress-code-color" style="--swatch: #f27f0d"></span>
-              <span class="dress-code-color" style="--swatch: #cdab91"></span>
+              <span class="dress-code-color dress-code-leaf" style="--swatch: #015649; --leaf-rotate: -24deg">
+                <svg class="dress-code-leaf-svg" viewBox="0 0 730 726" aria-hidden="true">
+                  <use href="#dress-code-maple-leaf"></use>
+                </svg>
+              </span>
+              <span class="dress-code-color dress-code-leaf" style="--swatch: #7e1525; --leaf-rotate: -10deg">
+                <svg class="dress-code-leaf-svg" viewBox="0 0 730 726" aria-hidden="true">
+                  <use href="#dress-code-maple-leaf"></use>
+                </svg>
+              </span>
+              <span class="dress-code-color dress-code-leaf" style="--swatch: #a63a03; --leaf-rotate: 4deg">
+                <svg class="dress-code-leaf-svg" viewBox="0 0 730 726" aria-hidden="true">
+                  <use href="#dress-code-maple-leaf"></use>
+                </svg>
+              </span>
+              <span class="dress-code-color dress-code-leaf" style="--swatch: #f27f0d; --leaf-rotate: 16deg">
+                <svg class="dress-code-leaf-svg" viewBox="0 0 730 726" aria-hidden="true">
+                  <use href="#dress-code-maple-leaf"></use>
+                </svg>
+              </span>
+              <span class="dress-code-color dress-code-leaf" style="--swatch: #cdab91; --leaf-rotate: 28deg">
+                <svg class="dress-code-leaf-svg" viewBox="0 0 730 726" aria-hidden="true">
+                  <use href="#dress-code-maple-leaf"></use>
+                </svg>
+              </span>
             </div>
             <p class="dress-code-intro">
               Мы постарались продумать красоту нашего торжества, и будем рады, если ваши наряды будут
@@ -309,6 +355,13 @@
       <p class="footer-note">С любовью ждём вас на нашем празднике</p>
     </footer>
     </div>
+
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" style="position: absolute; width: 0; height: 0">
+      <symbol id="dress-code-maple-leaf" viewBox="0 0 730 726">
+        <path fill="currentColor" d="M 366 66 L 369 88 L 379 119 L 390 129 L 409 130 L 410 150 L 414 165 L 420 178 L 430 189 L 437 194 L 448 198 L 466 199 L 483 195 L 496 187 L 502 181 L 482 237 L 472 273 L 469 304 L 470 310 L 475 315 L 490 315 L 498 311 L 510 299 L 520 284 L 539 285 L 552 281 L 566 268 L 572 255 L 578 257 L 600 257 L 619 250 L 636 238 L 659 213 L 647 235 L 628 258 L 622 268 L 622 280 L 631 287 L 639 288 L 630 309 L 630 328 L 632 333 L 637 338 L 644 339 L 630 351 L 619 368 L 614 384 L 614 405 L 618 413 L 623 418 L 631 422 L 674 424 L 697 428 L 670 433 L 640 445 L 627 453 L 617 463 L 604 472 L 556 499 L 530 518 L 529 533 L 538 552 L 552 568 L 575 584 L 556 581 L 442 582 L 428 580 L 406 573 L 394 566 L 383 556 L 374 541 L 368 541 L 367 557 L 370 631 L 376 683 L 371 695 L 368 698 L 368 596 L 366 545 L 364 539 L 357 540 L 353 550 L 339 565 L 321 575 L 304 580 L 290 582 L 218 580 L 174 581 L 156 584 L 175 572 L 193 553 L 200 541 L 203 531 L 203 521 L 201 517 L 182 503 L 126 471 L 97 448 L 62 433 L 44 429 L 35 429 L 38 427 L 58 424 L 97 423 L 107 419 L 115 411 L 118 403 L 118 386 L 113 369 L 105 355 L 88 339 L 96 337 L 102 328 L 102 311 L 93 288 L 100 287 L 109 281 L 110 269 L 105 260 L 82 231 L 73 213 L 92 235 L 109 248 L 121 254 L 132 257 L 154 257 L 159 255 L 166 269 L 176 279 L 192 285 L 212 284 L 224 302 L 235 312 L 246 316 L 259 314 L 262 310 L 263 303 L 262 284 L 259 269 L 249 234 L 231 183 L 249 195 L 266 199 L 287 197 L 302 189 L 309 182 L 317 167 L 321 153 L 322 130 L 341 129 L 353 118 L 360 99 L 366 66 Z"/>
+        <image href="assets/maple-leaf-lines.png" width="730" height="726" preserveAspectRatio="xMidYMid meet"/>
+      </symbol>
+    </svg>
 
     <script src="config.js"></script>
     <script src="script.js"></script>

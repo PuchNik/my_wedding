@@ -211,14 +211,20 @@ a {
   margin-top: 0;
   width: 100%;
   max-width: 100%;
-  font-weight: 10;
-  font-size: clamp(1.35rem, 10.5vw, 5.5rem);
-  line-height: 1;
-  letter-spacing: 0.1em;
+  font-family: "Marck Script", cursive;
+  font-weight: 400;
+  font-style: normal;
+  font-size: clamp(2.25rem, 12vw, 6rem);
+  line-height: 1.05;
+  letter-spacing: 0.02em;
   white-space: nowrap;
 }
 
 .hero-title .amp-italic {
+  font-family: inherit;
+  font-style: normal;
+  font-weight: inherit;
+  margin-inline: 0;
   color: rgba(255, 255, 255, 0.95);
 }
 
@@ -1017,18 +1023,34 @@ body.intro-complete #site-content {
   height: min(16rem, 56vw);
   padding: 0;
   border: none;
-  background: none;
+  background: transparent;
   cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
 }
 
 .intro-trigger:disabled {
   cursor: default;
 }
 
+.intro-trigger:focus {
+  outline: none;
+}
+
 .intro-trigger:focus-visible {
-  outline: 1px solid color-mix(in oklab, var(--primary) 55%, transparent);
-  outline-offset: 0.65rem;
-  border-radius: 0.2rem;
+  outline: none;
+}
+
+.intro-trigger:focus-visible .dove {
+  filter:
+    drop-shadow(0 0.85rem 1.5rem rgba(0, 0, 0, 0.12))
+    drop-shadow(0 0 0 2px color-mix(in oklab, var(--primary) 45%, transparent));
+}
+
+.intro-trigger:active {
+  background: transparent;
 }
 
 .dove-carrier {
@@ -1060,12 +1082,15 @@ body.intro-complete #site-content {
   height: auto;
   object-fit: contain;
   transform-origin: center center;
+  background: transparent;
   filter:
     drop-shadow(0 0.85rem 1.5rem rgba(0, 0, 0, 0.12))
     drop-shadow(0 0.2rem 0.45rem rgba(0, 0, 0, 0.06));
   user-select: none;
+  -webkit-user-select: none;
   -webkit-user-drag: none;
   pointer-events: none;
+  outline: none;
 }
 
 .intro.is-arrived .dove {

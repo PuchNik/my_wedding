@@ -477,6 +477,21 @@ function initCalendarReveal() {
   });
 }
 
+function initScrollBlur() {
+  var blur = document.querySelector(".site-scroll-blur");
+  if (!blur) return;
+
+  function update() {
+    document.body.classList.toggle("is-scrolled", window.scrollY > 28);
+  }
+
+  runWhenIntroDone(function () {
+    update();
+    window.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update, { passive: true });
+  });
+}
+
 function initReveal() {
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
     document.querySelectorAll(".reveal").forEach(function (el) {
@@ -514,6 +529,7 @@ function initReveal() {
 /* ===== Init ===== */
 document.addEventListener("DOMContentLoaded", function () {
   initIntro();
+  initScrollBlur();
   initCountdown();
   initCalendarReveal();
   initSchedule();

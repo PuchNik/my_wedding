@@ -15,7 +15,7 @@
       href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,300;1,400;1,500&family=Marck+Script&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css?v=46" />
+    <link rel="stylesheet" href="styles.css?v=47" />
   </head>
   <body class="intro-active">
     <!-- Intro -->
@@ -38,12 +38,14 @@
           <div class="intro-invitation-card">
             <span class="letter-content">
               <span class="letter-eyebrow">Приглашение</span>
-              <span class="letter-names">Будем рады вам</span>
+              <span class="letter-names">Будем рады вас видеть</span>
             </span>
           </div>
         </div>
       </div>
     </div>
+
+    <div class="site-scroll-blur" aria-hidden="true"></div>
 
     <div id="site-content" inert aria-hidden="true">
     <main id="top">
@@ -51,6 +53,14 @@
       <section class="hero">
         <img src="assets/DSC07213.jpg" alt="Пара, идущая по залитому солнцем полю" class="hero-bg" />
         <div class="hero-overlay"></div>
+        <div class="hero-frame" aria-hidden="true">
+          <span class="hero-frame-line hero-frame-line--outer"></span>
+          <span class="hero-frame-line hero-frame-line--inner"></span>
+          <span class="hero-frame-corner hero-frame-corner--tl"></span>
+          <span class="hero-frame-corner hero-frame-corner--tr"></span>
+          <span class="hero-frame-corner hero-frame-corner--bl"></span>
+          <span class="hero-frame-corner hero-frame-corner--br"></span>
+        </div>
       </section>
 
       <!-- Calendar -->

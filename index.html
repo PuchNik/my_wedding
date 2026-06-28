@@ -15,52 +15,34 @@
       href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,300;1,400;1,500&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css?v=39" />
+    <link rel="stylesheet" href="styles.css?v=43" />
   </head>
   <body class="intro-active">
     <!-- Intro -->
-    <div id="intro" class="intro">
+    <div id="intro" class="intro is-entering">
       <div class="intro-inner">
-        <p class="intro-hint">Откройте приглашение</p>
-        <button type="button" class="envelope envelope--classic" id="envelope" aria-label="Открыть приглашение">
-          <span class="envelope-shadow" aria-hidden="true"></span>
-          <span class="envelope-letter">
+        <p class="intro-hint">Нажмите на голубя</p>
+        <button type="button" class="intro-trigger" id="intro-trigger" aria-label="Открыть приглашение" disabled>
+          <div class="dove-carrier">
+            <img
+              class="dove"
+              src="assets/dove.png"
+              width="952"
+              height="606"
+              alt=""
+              decoding="async"
+            />
+          </div>
+        </button>
+        <div class="intro-invitation" aria-hidden="true">
+          <div class="intro-invitation-card">
             <span class="letter-content">
               <span class="letter-eyebrow">Приглашение</span>
               <span class="letter-names">Никита и Анна</span>
               <span class="letter-date">25 сентября 2026</span>
             </span>
-          </span>
-          <svg class="envelope-layer envelope-layer--body" viewBox="0 0 400 280" aria-hidden="true">
-            <rect class="env-body" x="8" y="8" width="384" height="264" rx="2" />
-          </svg>
-          <svg class="envelope-layer envelope-layer--panels" viewBox="0 0 400 280" aria-hidden="true">
-            <path class="env-panel env-panel--left" d="M 8 8 L 8 272 L 200 132 Z" />
-            <path class="env-panel env-panel--right" d="M 392 8 L 392 272 L 200 132 Z" />
-          </svg>
-          <svg class="envelope-layer envelope-layer--pocket" viewBox="0 0 400 280" aria-hidden="true">
-            <path class="env-pocket" d="M 8 272 L 392 272 L 200 132 Z" />
-          </svg>
-          <svg class="envelope-layer envelope-layer--creases" viewBox="0 0 400 280" aria-hidden="true">
-            <line class="env-crease" x1="8" y1="272" x2="200" y2="132" />
-            <line class="env-crease" x1="392" y1="272" x2="200" y2="132" />
-            <line class="env-crease env-crease--flap" x1="8" y1="8" x2="200" y2="132" />
-            <line class="env-crease env-crease--flap" x1="392" y1="8" x2="200" y2="132" />
-          </svg>
-          <span class="envelope-flap" aria-hidden="true">
-            <svg viewBox="0 0 400 280" aria-hidden="true">
-              <path class="env-flap" d="M 8 8 L 392 8 L 200 132 Z" />
-            </svg>
-          </span>
-          <span class="envelope-seal" aria-hidden="true">
-            <span class="envelope-seal-disc"></span>
-            <svg class="envelope-seal-heart" viewBox="0 0 24 24" aria-hidden="true">
-              <path
-                d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"
-              />
-            </svg>
-          </span>
-        </button>
+          </div>
+        </div>
       </div>
     </div>
 

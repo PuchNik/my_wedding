@@ -253,9 +253,9 @@ function skipIntro(intro, site) {
 
 function initIntro() {
   var intro = document.getElementById("intro");
-  var envelope = document.getElementById("envelope");
+  var trigger = document.getElementById("intro-trigger");
   var site = document.getElementById("site-content");
-  if (!intro || !envelope) {
+  if (!intro || !trigger) {
     skipIntro(intro, site);
     return;
   }
@@ -270,19 +270,46 @@ function initIntro() {
     return;
   }
 
-  envelope.addEventListener("click", function () {
-    if (intro.classList.contains("is-opening")) return;
+  var carrier = intro.querySelector(".dove-carrier");
+  var flyInDone = false;
+
+  function markArrived() {
+    if (flyInDone) return;
+    flyInDone = true;
+    intro.classList.remove("is-entering");
+    intro.classList.add("is-arrived");
+    trigger.disabled = false;
+  }
+
+  if (carrier) {
+    carrier.addEventListener("animationend", function (event) {
+      if (event.animationName === "dove-fly-in") {
+        markArrived();
+      }
+    });
+  }
+
+  window.setTimeout(markArrived, 2600);
+
+  trigger.addEventListener("click", function () {
+    if (!intro.classList.contains("is-arrived") || intro.classList.contains("is-opening")) return;
 
     intro.classList.add("is-opening");
+    trigger.disabled = true;
+
+    var invitation = intro.querySelector(".intro-invitation");
+    if (invitation) {
+      invitation.removeAttribute("aria-hidden");
+    }
 
     window.setTimeout(function () {
       intro.classList.add("is-revealing");
-    }, 850);
+    }, 650);
 
     window.setTimeout(function () {
       sessionStorage.setItem("weddingIntroSeen", "1");
       finishIntro(intro, site);
-    }, 2300);
+    }, 2600);
   });
 }
 

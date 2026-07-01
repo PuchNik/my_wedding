@@ -3,14 +3,13 @@
 /* ===== Wedding data ===== */
 var wedding = {
   dateISO: "2026-09-25T00:00:00+03:00",
+  chatUrl: "",
 };
 
 var schedule = [
   { time: "15:00", title: "Сбор гостей", desc: "Welcome-зона, лёгкие закуски и игристое в саду." },
-  { time: "16:00", title: "Церемония", desc: "Выездная регистрация под открытым небом." },
-  { time: "17:00", title: "Фуршет", desc: "Поздравления, фотографии и тёплые объятия." },
-  { time: "18:30", title: "Банкет", desc: "Ужин, первый танец и тосты от близких." },
-  { time: "22:00", title: "Вечеринка", desc: "Танцы до последнего гостя и праздничный салют." },
+  { time: "16:00", title: "Банкет", desc: "Поздравления, короткие интерактивы и первый танец молодых." },
+  { time: "22:00", title: "Окончание торжества", desc: "Финальные тосты, общие фото, прощание с гостями." },
 ];
 
 /* ===== Helpers ===== */
@@ -51,6 +50,12 @@ function initCountdown() {
 }
 
 /* ===== Schedule timeline ===== */
+function initGuestInfo() {
+  var link = document.getElementById("guest-chat-link");
+  if (!link || !wedding.chatUrl) return;
+  link.href = wedding.chatUrl;
+}
+
 function initSchedule() {
   var list = document.getElementById("timeline");
   if (!list) return;
@@ -533,6 +538,7 @@ document.addEventListener("DOMContentLoaded", function () {
   initCountdown();
   initCalendarReveal();
   initSchedule();
+  initGuestInfo();
   initDressCodePaletteReveal();
   initRsvp();
 });

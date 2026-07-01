@@ -15,12 +15,24 @@
       href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,300;1,400;1,500&family=Marck+Script&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css?v=47" />
+    <link rel="stylesheet" href="styles.css?v=66" />
   </head>
   <body class="intro-active">
     <!-- Intro -->
     <div id="intro" class="intro is-entering">
       <div class="intro-inner">
+        <div class="intro-header">
+          <img
+            class="intro-rings"
+            src="assets/rings.png?v=4"
+            width="502"
+            height="309"
+            alt=""
+            decoding="async"
+            draggable="false"
+          />
+          <p class="intro-greeting">Вам письмо от Никиты и Анны</p>
+        </div>
         <button type="button" class="intro-trigger" id="intro-trigger" aria-label="Открыть приглашение" disabled>
           <div class="dove-carrier">
             <img
@@ -37,8 +49,7 @@
         <div class="intro-invitation" aria-hidden="true">
           <div class="intro-invitation-card">
             <span class="letter-content">
-              <span class="letter-eyebrow">Приглашение</span>
-              <span class="letter-names">Будем рады вас видеть</span>
+              <span class="letter-names">Приглашение на свадьбу ❤️</span>
             </span>
           </div>
         </div>
@@ -50,21 +61,29 @@
     <div id="site-content" inert aria-hidden="true">
     <main id="top">
       <!-- Hero -->
-      <section class="hero">
-        <img src="assets/DSC07213.jpg" alt="Пара, идущая по залитому солнцем полю" class="hero-bg" />
-        <div class="hero-overlay"></div>
-        <div class="hero-frame" aria-hidden="true">
-          <span class="hero-frame-line hero-frame-line--outer"></span>
-          <span class="hero-frame-line hero-frame-line--inner"></span>
-          <span class="hero-frame-corner hero-frame-corner--tl"></span>
-          <span class="hero-frame-corner hero-frame-corner--tr"></span>
-          <span class="hero-frame-corner hero-frame-corner--bl"></span>
-          <span class="hero-frame-corner hero-frame-corner--br"></span>
+      <section class="hero section-tone-light" aria-label="Никита и Анна">
+        <div class="hero-inner container">
+          <div class="hero-gallery">
+            <figure class="hero-photo">
+              <img src="assets/пара.jpg" alt="Никита и Анна на крыше с видом на Москву" loading="eager" decoding="async" />
+            </figure>
+            <figure class="hero-photo">
+              <img src="assets/Спуск.jpg" alt="Никита и Анна спускаются по ступеням" loading="eager" decoding="async" />
+            </figure>
+            <figure class="hero-photo hero-photo--wide">
+              <img
+                src="assets/DSC07213.jpg"
+                alt="Никита и Анна в подвесном кресле на крыше"
+                loading="eager"
+                decoding="async"
+              />
+            </figure>
+          </div>
         </div>
       </section>
 
       <!-- Calendar -->
-      <section class="calendar-section" aria-label="Дата свадьбы">
+      <section class="calendar-section section-tone-dark" aria-label="Дата свадьбы">
         <div class="calendar-bg" aria-hidden="true">
           <svg class="calendar-bg-heart calendar-bg-heart--1" viewBox="0 0 24 24">
             <path
@@ -95,6 +114,13 @@
             <span class="calendar-caption-text">Наш день</span>
             <span class="rule rule-dark"></span>
           </p>
+          <section id="story" class="story narrow center reveal">
+            <h2 class="section-title">Дорогие наши родные и друзья</h2>
+            <p class="eyebrow eyebrow-primary">
+              Совсем скоро наступит очень важный для нас день, и мы хотим разделить его вместе с вами!
+              С большим удовольствием приглашаем вас на нашу свадьбу!
+            </p>
+          </section>
           <div class="calendar-card">
             <header class="calendar-header">
               <h2 class="calendar-month">Сентябрь</h2>
@@ -157,63 +183,23 @@
         </div>
       </section>
 
-      <!-- Story -->
-      <section id="story" class="story container narrow center reveal">
-        <p class="eyebrow eyebrow-primary">Дорогие друзья</p>
-        <h2 class="section-title">Мы приглашаем вас разделить с нами этот день</h2>
-        <div class="story-text">
-          <p>
-            Семь лет назад мы случайно оказались за одним столиком в маленькой кофейне.
-            С тех пор каждый день мы выбираем друг друга — в больших решениях и в самых
-            обычных мелочах.
-          </p>
-          <p>
-            Теперь мы хотим сделать главный шаг и сказать «да» в окружении самых близких
-            людей. Ваше присутствие сделает этот день по-настоящему незабываемым.
-          </p>
-        </div>
-      </section>
-
       <!-- Details -->
-      <section id="details" class="details reveal">
+      <section id="details" class="details section-tone-light reveal">
         <div class="container details-grid">
-          <div class="details-photo">
-            <img src="assets/Duna.jpg" alt="Площадка торжества — Ресторан «Дюна»" />
+          <div class="details-media">
+            <h2 class="section-title details-title">Место торжества</h2>
+            <div class="details-photo">
+              <img src="assets/Duna.jpg" alt="Площадка торжества — Ресторан «Дюна»" />
+            </div>
           </div>
           <div class="details-info">
-            <h2 class="section-title">Детали торжества</h2>
             <dl class="details-list">
               <div class="details-item">
-                <span class="details-icon">
-                  <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-                </span>
                 <div>
-                  <dt>Дата</dt>
-                  <dd class="details-value">25 сентября 2026</dd>
-                  <dd class="details-sub">пятница</dd>
-                </div>
-              </div>
-              <div class="details-item">
-                <span class="details-icon">
-                  <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                </span>
-                <div>
-                  <dt>Время</dt>
-                  <dd class="details-value">15:00</dd>
-                  <dd class="details-sub">Сбор гостей</dd>
-                </div>
-              </div>
-              <div class="details-item">
-                <span class="details-icon">
-                  <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                </span>
-                <div>
-                  <dt>Место</dt>
-                  <dd class="details-value">Ресторан «Дюна»</dd>
+                  <dd class="details-value">Наш праздник пройдет в ресторане «Дюна» по адресу: Московская область, Юбилейный просп., 23В, Реутов</dd>
                 </div>
               </div>
             </dl>
-            <p class="details-address">Московская область, Юбилейный просп., 23В, Реутов</p>
             <a
               href="https://yandex.ru/maps/-/CTQ26D2Z"
               target="_blank"
@@ -226,20 +212,24 @@
       </section>
 
       <!-- Schedule -->
-      <section id="schedule" class="schedule container narrow">
+      <section id="schedule" class="schedule section-tone-dark">
+        <div class="container narrow">
         <div class="center reveal">
           <p class="eyebrow eyebrow-primary">Расписание дня</p>
-          <h2 class="section-title">Программа праздника</h2>
+          <h2 class="section-title">План мероприятия</h2>
         </div>
+        <figure class="schedule-entrance reveal">
+          <img src="assets/вход.jpg" alt="Вход в ресторан «Дюна»" />
+        </figure>
         <ol class="timeline" id="timeline"></ol>
+        </div>
       </section>
 
       <!-- Dress code -->
-      <section id="dress-code" class="dress-code-section">
+      <section id="dress-code" class="dress-code-section section-tone-light">
         <div class="container dress-code-inner narrow center">
           <div class="reveal">
-            <p class="eyebrow eyebrow-primary">Дресс-код</p>
-            <h2 class="section-title">Стиль праздника</h2>
+            <h2 class="section-title">Дресс-код</h2>
             <div class="dress-code-palette" aria-label="Цветовая гамма праздника">
               <span class="dress-code-color dress-code-leaf" style="--swatch: #015649; --leaf-rotate: -24deg">
                 <svg class="dress-code-leaf-svg" viewBox="0 0 730 726" aria-hidden="true">
@@ -268,33 +258,59 @@
               </span>
             </div>
             <p class="dress-code-intro">
-              Мы постарались продумать красоту нашего торжества, и будем рады, если ваши наряды будут
-              созвучны цветовой гамме праздника
+              Для нас главное - ваше присутствие!<br>
+              Мы будем очень благодарны, если в своих нарядах вы поддержите цветовую палитру нашей свадьбы.
             </p>
           </div>
         </div>
       </section>
 
+            <!-- Guest info -->
+            <section id="guest-info" class="guest-info section-tone-dark">
+              <div class="container narrow">
+              <div class="guest-info-inner reveal center">
+                <h2 class="section-title">Детали</h2>
+                <p class="guest-info-text">
+                  Если вы хотите сделать для нас сюрприз/творческий подарок, свяжитесь, пожалуйста, с нашим замечательным ведущим —
+                  Сергеем:
+                  <a class="guest-info-phone" href="tel:+79690856969">8 969 085 69 69</a>
+                </p>
+                <p class="guest-info-text">
+                  Также мы создали общий чат, куда можно будет обратиться по всем возникающим вопросам, поделиться фото и видео
+                  после праздника!
+                </p>
+                <a
+                  id="guest-chat-link"
+                  class="btn btn-primary btn-pill"
+                  href="#"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >Перейти в чат</a
+                >
+              </div>
+              </div>
+            </section>
+
       <!-- RSVP -->
-      <section id="rsvp" class="rsvp container reveal">
+      <section id="rsvp" class="rsvp section-tone-light reveal">
+        <div class="rsvp-inner container narrow">
         <div id="rsvp-form-wrap">
           <div class="center">
-            <p class="eyebrow eyebrow-primary">Будете с нами?</p>
-            <h2 class="section-title">Подтвердите присутствие</h2>
-            <p class="rsvp-deadline">Пожалуйста, ответьте до 1 августа 2026 года.</p>
+            <h2 class="section-title">Анкета гостя</h2>
+            <p class="rsvp-deadline">Просьба заполнить до 15 августа 2026 года.</p>
           </div>
 
           <form id="rsvp-form" class="rsvp-form" novalidate>
             <div class="field">
               <label for="name">Имя и фамилия</label>
-              <input id="name" name="name" type="text" required placeholder="Как к вам обращаться" />
+              <input id="name" name="name" type="text" required placeholder="Пучков Никита Валерьевич" />
             </div>
 
             <div class="field">
-              <span class="field-label">Сможете прийти?</span>
+              <span class="field-label">Подтвердите присутствие</span>
               <div class="choice-grid">
-                <button type="button" class="choice is-active" data-attending="yes">С радостью буду</button>
-                <button type="button" class="choice" data-attending="no">К сожалению, нет</button>
+                <button type="button" class="choice is-active" data-attending="yes">Да, с удовольствием буду</button>
+                <button type="button" class="choice" data-attending="no">К сожалению, не смогу</button>
               </div>
             </div>
 
@@ -309,13 +325,18 @@
                 </select>
               </div>
               <div class="field">
-                <label for="note">Уточнения и иные комментарии</label>
-                <textarea id="note" name="note" rows="3" placeholder="Аллергия…"></textarea>
+                <label for="note">Уточнения и комментарии</label>
+                <textarea
+                id="note"
+                name="note"
+                rows="3"
+                placeholder="Аллергия...&#10;Буду с супругой/супругом...&#10;Другой комментарий..."
+></textarea>
               </div>
             </div>
 
             <p id="rsvp-error" class="rsvp-error" hidden role="alert"></p>
-            <button type="submit" class="btn btn-primary btn-pill btn-block">Отправить анкету</button>
+            <button type="submit" class="btn btn-primary btn-pill btn-block">Отправить</button>
           </form>
         </div>
 
@@ -330,12 +351,13 @@
           </p>
           <svg class="success-heart" viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
         </div>
+        </div>
       </section>
 
     </main>
 
     <!-- Footer -->
-    <footer class="site-footer center">
+    <footer class="site-footer section-tone-dark center">
       <p class="footer-names">Никита<span class="amp-italic">и</span>Анна</p>
       <p class="footer-meta">25 сентября 2026</p>
       <p class="footer-note">С любовью ждём вас на нашем празднике</p>
